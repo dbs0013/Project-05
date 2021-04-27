@@ -3,3 +3,6 @@
 !*.hpp
 !README.md
 !makefile
+!input*.txt
+!.gitignore
+!checkall.bash
