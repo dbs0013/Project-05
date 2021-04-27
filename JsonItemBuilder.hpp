@@ -19,6 +19,11 @@ struct ItemBuilder
 
     uint32_t damage = 0;
     uint32_t armor = 0;
+    // Aspects
+    uint32_t serration = 0;
+    uint32_t tindering = 0;
+    uint32_t poisoning = 0;
+    uint32_t lifedrain = 0;
 };
 
 
@@ -42,6 +47,11 @@ private:
     const std::string STR_TYPE = "type";
     const std::string STR_DAMAGE = "damage";
     const std::string STR_ARMOR = "armor value";
+    // Aspects
+    const std::string STR_SERRATION = "serration";
+    const std::string STR_TINDERING = "tindering";
+    const std::string STR_POISONING = "poisoning";
+    const std::string STR_LIFEDRAIN = "life drain";
 
     using json = nlohmann::json;
     std::string _file;

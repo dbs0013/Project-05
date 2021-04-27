@@ -21,6 +21,8 @@ public:
 
     void PrintInventory() const;
 
+    Item GetFirstItem() const;
+
 private:
 
     Dictionary<uint32_t, Item> _inventoryData;

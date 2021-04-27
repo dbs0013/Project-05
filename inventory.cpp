@@ -14,8 +14,6 @@ void Inventory::Init(JsonItemBuilder &jsonBuilder, const std::vector<int> & uids
     {
         _inventoryData.Insert(uid, {jsonBuilder, static_cast<uint32_t>(uid)});
     }
-
-
 }
 
 void Inventory::AddItemToInventory(const Item &item)
@@ -55,6 +53,11 @@ bool Inventory::IsEmpty() const
 
 }
 
+Item Inventory::GetFirstItem() const 
+{
+    Vector<uint32_t> invList = _inventoryData.Keys();
+    return _inventoryData.At(invList.At(0));
+}
 
 // implement
 // loops through the list and calls the item to 

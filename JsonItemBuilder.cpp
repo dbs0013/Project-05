@@ -74,6 +74,19 @@ ItemBuilder JsonItemBuilder::BuildItem(uint32_t uid)
     {
         item.armor = itemFound[STR_ARMOR];
     }
+    // Aspects
+    if (itemFound.contains(STR_SERRATION)) {
+        item.serration = itemFound[STR_SERRATION];
+    }
+    if (itemFound.contains(STR_TINDERING)) {
+        item.tindering = itemFound[STR_TINDERING];
+    }
+    if (itemFound.contains(STR_POISONING)) {
+        item.poisoning = itemFound[STR_POISONING];
+    }
+    if (itemFound.contains(STR_LIFEDRAIN)) {
+        item.lifedrain = itemFound[STR_LIFEDRAIN];
+    }
 
     item.valid = true;
 

@@ -17,12 +17,19 @@ Entity::Entity(JsonEntityBuilder & builder, JsonItemBuilder & inventory, uint32_
     _class = _builder.Class;
 
     _inventory.Init(inventory, _builder.inventoryIDs);
+
+    _currentEquipped = this->_inventory.GetFirstItem();
+    // Assess status effect
+    _serration = _currentEquipped.Serration();
+    _tindering = _currentEquipped.Tindering();
+    _poisoning = _currentEquipped.Poisoning();
+    _lifedrain = _currentEquipped.LifeDrain();
 }
 
 Entity::~Entity()
 {
-}
 
+}
 
 // implement
 // prints the inventory of this entity
@@ -57,7 +64,6 @@ void Entity::LootAnEntity(Entity *target)
     _inventory.LootAnotherInventory(target->_inventory);
 }
 
-
 // implement
 // if item passed is null, do nothing.
 void Entity::add_item_to_inventory(const Item & item)
@@ -69,6 +75,13 @@ void Entity::add_item_to_inventory(const Item & item)
 uint32_t Entity::CurrentHP() const
 {
     return _hp;
+}
+// Prints current status level
+void Entity::CurrentStatuses() const 
+{
+    std::cout << "Serration: " << _serration
+              << "Tindering: " << _tindering
+              << "Poisoning: " << _poisoning; 
 }
 
 bool Entity::IsAlive() const
@@ -91,7 +104,20 @@ void Entity::Attack(Entity *target, uint32_t amount, const std::string &attackNa
     std::cout << this->Name() << " uses " << attackName << " on target "
               << target->Name() << " dealing " << amount << " damage."
               << std::endl;
-    target->take_damage(amount);
+    // Life steal kicks in 
+    if (this->_lifedrain > 0) {
+        std::cout << this->Name() << ": "
+                  << _lifedrain << " HP stolen from " 
+                  << target->Name() << std::endl;
+        // Lifesteal plus damage given to target
+        target->take_damage(amount + _lifedrain);
+        // Healing
+        this->take_healing(_lifedrain);
+    }
+    // If no life steal, target takes flat weapon damage
+    else {
+        target->take_damage(amount);
+    }
 }
 
 void Entity::Heal(Entity *target, uint32_t amount, const std::string & healName)
@@ -102,6 +128,21 @@ void Entity::Heal(Entity *target, uint32_t amount, const std::string & healName)
     target->take_healing(amount);
 }
 
+void Entity::StatusCalc() {
+    // Serration level decreases per turn
+    if (_serration != 0) {
+        _serration--;
+    }
+    // Tindering level decreases per turn
+    if (_tindering != 0) {
+        _tindering--;
+    }
+    // Poisoning level increases per turn
+    if (_poisoning < 1) {
+        _poisoning += 0.1;
+    }
+}
+
 void Entity::take_damage(uint32_t amount)
 {
     if(_hp < amount)
@@ -110,7 +151,22 @@ void Entity::take_damage(uint32_t amount)
         std::cout << Name() << " dies" << std::endl;
         return;
     }
-    _hp -= amount;
+    // Status calculations
+    if (_serration != 0) {
+        _hp -= amount + _serration;
+    }
+    else if (_tindering) {
+        _hp -= amount + _tindering;
+    }
+    else if (_poisoning) {
+        uint32_t tempDamage = amount + (amount * _poisoning);
+        std::cout << Name() << " takes " << tempDamage
+                  << " from poison! " << std::endl;
+        _hp -= tempDamage;
+    }
+    else {
+        _hp -= amount;
+    }
 }
 
 void Entity::take_healing(uint32_t amount)
@@ -132,6 +188,11 @@ void Entity::errorFindingAbility(const std::string& spellName)
 {
     std::cout << _class << " encountered an error trying to use spell: " 
               << spellName << std::endl;
+}
+// Equipped item from inventory
+Item Entity::CurrentEquipped() const 
+{
+    return _currentEquipped;
 }
 
 std::string Entity::Race() const

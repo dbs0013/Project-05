@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "inventory.hpp"
+#include "item.hpp"
 #include "JsonEntityBuilder.hpp"
 #include "JsonItemBuilder.hpp"
 
@@ -26,16 +27,22 @@ private:
     std::string _name;
     std::string _race;
     std::string _class;
-
-
+    // Equipped item from inventory 
+    Item _currentEquipped;
 
 // protected to allow access going up the inheritance tree.
 protected:
     EntityBuilder _builder;
     Inventory _inventory;
+    // Statuses
+    uint32_t _serration;
+    uint32_t _tindering;
+    uint32_t _poisoning;
+    uint32_t _lifedrain;
 
     void errorFindingAbility(const std::string & spellName);
 
+    Item CurrentEquipped() const;
     uint32_t GetStrength() const;
     uint32_t GetAgility() const;
     uint32_t GetIntelligence() const;
@@ -50,6 +57,7 @@ protected:
 
     void Attack(Entity * target, uint32_t amount, const std::string &attackName);
     void Heal(Entity *target, uint32_t amount, const std::string &healName);
+    void StatusCalc();
 
 public:
 
@@ -62,6 +70,8 @@ public:
     std::string Race() const;
     std::string Class() const;
     uint32_t UID() const;
+    // Print statuses
+    void CurrentStatuses() const;
 
     void PrintInventory() const;
     bool HasItemsInInventory() const;
