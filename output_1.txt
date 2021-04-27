@@ -1,0 +1,8 @@
+""Inventory Test #1""
+""Verify Jim the Strong is in the encounter""
+""P 6 should fail""
+Jim the Strong the warrior has entered the battle
+Warrior: Jim the Strong
+	Current HP: 15
+	Strength: 17
+Attempted to access an entity with a UID: 6 that did not exist within the list.  Exiting.

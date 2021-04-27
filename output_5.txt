@@ -1,0 +1,146 @@
+""Running Full Party Test""
+""This will kill a monster with loot""
+""Your players should automatically loot the monster!""
+Uniden the mage has entered the battle
+Elva the rogue has entered the battle
+Bad Goblin 1 the monster has entered the battle
+Healer McMedic the priest has entered the battle
+Great Goblin the monster has entered the battle
+Hobgoblin the monster has entered the battle
+Jim the Strong the warrior has entered the battle
+Goblin: Hobgoblin
+	Current HP: 25
+	HIDDEN INVENTORY
+--------------------------------
+Goblin: Great Goblin
+	Current HP: 75
+	HIDDEN INVENTORY
+--------------------------------
+Warrior: Jim the Strong
+	Current HP: 15
+	Strength: 17
+--------------------------------
+Priest: Healer McMedic
+	Current HP: 9
+	Wisdom: 16
+--------------------------------
+Mage: Uniden
+	Current HP: 5
+	Intelligence: 17
+--------------------------------
+Rogue: Elva
+	Current HP: 7
+	Agility: 17
+--------------------------------
+Goblin: Bad Goblin 1
+	Current HP: 6
+	HIDDEN INVENTORY
+Hobgoblin uses WeaponAttack on target Jim the Strong dealing 6 damage.
+Great Goblin uses WeaponAttack on target Healer McMedic dealing 4 damage.
+Jim the Strong uses Strike on target Hobgoblin dealing 8 damage.
+Healer McMedic uses Greater Heal on target Jim the Strong healing for 32
+Elva uses Blindside on target Hobgoblin dealing 20 damage.
+Hobgoblin dies
+Goblin: Great Goblin
+	Current HP: 75
+	HIDDEN INVENTORY
+--------------------------------
+Warrior: Jim the Strong
+	Current HP: 15
+	Strength: 17
+--------------------------------
+Priest: Healer McMedic
+	Current HP: 5
+	Wisdom: 16
+--------------------------------
+Mage: Uniden
+	Current HP: 5
+	Intelligence: 17
+--------------------------------
+Rogue: Elva
+	Current HP: 7
+	Agility: 17
+[Sword of a Thousand Truths]: 
+	Type : sword
+	Armor: 0
+	Damage: 20
+
+[Nameless Chest Armor]: 
+	Type : chest
+	Armor: 10
+	Damage: 0
+
+[Duskblade of Draktharr]: 
+	Type : sword
+	Armor: 0
+	Damage: 14
+
+[Riftmaker]: 
+	Type : staff
+	Armor: 0
+	Damage: 4
+
+--------------------------------
+Goblin: Bad Goblin 1
+	Current HP: 6
+	HIDDEN INVENTORY
+Jim the Strong uses Strike on target Great Goblin dealing 8 damage.
+Elva uses Backstab on target Great Goblin dealing 34 damage.
+Great Goblin uses WeaponAttack on target Jim the Strong dealing 4 damage.
+Healer McMedic uses Greater Heal on target Jim the Strong healing for 32
+Uniden uses Magic Missile on target Great Goblin dealing 8 damage.
+Uniden uses Magic Missile on target Great Goblin dealing 8 damage.
+Uniden uses Magic Missile on target Great Goblin dealing 8 damage.
+Uniden uses Fireball on target Great Goblin dealing 25 damage.
+Great Goblin dies
+Warrior: Jim the Strong
+	Current HP: 15
+	Strength: 17
+--------------------------------
+Priest: Healer McMedic
+	Current HP: 5
+	Wisdom: 16
+--------------------------------
+Mage: Uniden
+	Current HP: 5
+	Intelligence: 17
+[Nameless Chest Armor]: 
+	Type : chest
+	Armor: 10
+	Damage: 0
+
+[aghanim's scepter]: 
+	Type : staff
+	Armor: 0
+	Damage: 4
+
+--------------------------------
+Rogue: Elva
+	Current HP: 7
+	Agility: 17
+[Sword of a Thousand Truths]: 
+	Type : sword
+	Armor: 0
+	Damage: 20
+
+[Nameless Chest Armor]: 
+	Type : chest
+	Armor: 10
+	Damage: 0
+
+[Duskblade of Draktharr]: 
+	Type : sword
+	Armor: 0
+	Damage: 14
+
+[Riftmaker]: 
+	Type : staff
+	Armor: 0
+	Damage: 4
+
+--------------------------------
+Goblin: Bad Goblin 1
+	Current HP: 6
+	HIDDEN INVENTORY
+""**********************************""
+""**********************************""

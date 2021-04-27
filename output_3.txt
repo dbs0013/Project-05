@@ -1,0 +1,41 @@
+""Inventory Test #3""
+""Add multiple mobs and fight""
+""verify the goblins all die""
+Elva the rogue has entered the battle
+Jim the Strong the warrior has entered the battle
+Healer McMedic the priest has entered the battle
+Uniden the mage has entered the battle
+Bad Goblin 3 the monster has entered the battle
+Bad Goblin 1 the monster has entered the battle
+Bad Goblin 2 the monster has entered the battle
+Jim the Strong uses Strike on target Bad Goblin 1 dealing 8 damage.
+Bad Goblin 1 dies
+Healer McMedic uses Greater Heal on target Jim the Strong healing for 32
+Uniden uses Magic Missile on target Bad Goblin 2 dealing 8 damage.
+Bad Goblin 2 dies
+Uniden uses Magic Missile on target Bad Goblin 2 dealing 8 damage.
+Bad Goblin 2 dies
+Uniden uses Magic Missile on target Bad Goblin 2 dealing 8 damage.
+Bad Goblin 2 dies
+Elva uses Blindside on target Bad Goblin 3 dealing 20 damage.
+Bad Goblin 3 dies
+Warrior: Jim the Strong
+	Current HP: 15
+	Strength: 17
+[Heart of Tarrasque]: 
+	Type : shield
+	Armor: 22
+	Damage: 0
+
+--------------------------------
+Priest: Healer McMedic
+	Current HP: 9
+	Wisdom: 16
+--------------------------------
+Mage: Uniden
+	Current HP: 5
+	Intelligence: 17
+--------------------------------
+Rogue: Elva
+	Current HP: 7
+	Agility: 17

@@ -1,0 +1,29 @@
+""Inventory Test #2""
+""Verify Drizzt the Quick is in the encounter""
+""Verify Drizzt has an inventory""
+""P 6 should fail""
+Drizzt the Quick the warrior has entered the battle
+Warrior: Drizzt the Quick
+	Current HP: 12
+	Strength: 14
+[Random Weapon]: 
+	Type : mace
+	Armor: 0
+	Damage: 1
+
+[Sword of a Thousand Truths]: 
+	Type : sword
+	Armor: 0
+	Damage: 20
+
+[Dark Saber]: 
+	Type : lazer-sword
+	Armor: 0
+	Damage: 25
+
+[Nameless Chest Armor]: 
+	Type : chest
+	Armor: 10
+	Damage: 0
+
+Attempted to access an entity with a UID: 6 that did not exist within the list.  Exiting.
