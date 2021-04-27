@@ -2,4 +2,4 @@
 !*.cpp
 !*.hpp
 !README.md
-!Makefile
+!makefile
