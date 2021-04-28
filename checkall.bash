@@ -5,7 +5,7 @@ _test_file=""
 _project_file=""
 _m_output=""
 projectName="./Project04"
-_valgrindFile=""
+#_valgrindFile=""
 
 
 # valgrind  --leak-check=full --log-file="_valgrind_3.txt" ./Project04 input_3.txt
@@ -16,16 +16,16 @@ make
 # make
 
 
-dispValgrind(){
-        [ ! -f "$_valgrindFile" ] && { echo "Error: $_valgrindFile file not found."; exit 2; }
-        
-        if [ -s "$_valgrindFile" ] 
-        then
-                echo "Displaying $_project_file:"
-                echo "$(<$_valgrindFile)"
+#dispValgrind(){
+  #      [ ! -f "$_valgrindFile" ] && { echo "Error: $_valgrindFile file not found."; exit 2; }
+ #       
+ #       if [ -s "$_valgrindFile" ] 
+  #      then
+  #              echo "Displaying $_project_file:"
+ #               echo "$(<$_valgrindFile)"
                 # do something as file has data
-        fi
-}
+#        fi
+#}
 
 checkOutput(){
         [ ! -f "$_test_file" ] && { echo "Error: $_test_file file not found."; exit 2; }
@@ -44,11 +44,11 @@ checkOutput(){
 
 checkAll(){
 
-        valgrind --leak-check=full --demangle=yes --log-file=valgrind_1.txt $projectName ./input_1.txt > out1.txt
-        valgrind --leak-check=full --log-file="valgrind_2.txt" $projectName ./input_2.txt > out2.txt
-        valgrind --leak-check=full --log-file="valgrind_3.txt" $projectName ./input_3.txt > out3.txt
-        valgrind --leak-check=full --log-file="valgrind_4.txt" $projectName ./input_4.txt > out4.txt
-        valgrind --leak-check=full --log-file="valgrind_5.txt" $projectName ./input_5.txt > out5.txt
+        #valgrind --leak-check=full --demangle=yes --log-file=valgrind_1.txt $projectName ./input_1.txt > out1.txt
+        #valgrind --leak-check=full --log-file="valgrind_2.txt" $projectName ./input_2.txt > out2.txt
+        #valgrind --leak-check=full --log-file="valgrind_3.txt" $projectName ./input_3.txt > out3.txt
+        #valgrind --leak-check=full --log-file="valgrind_4.txt" $projectName ./input_4.txt > out4.txt
+        #valgrind --leak-check=full --log-file="valgrind_5.txt" $projectName ./input_5.txt > out5.txt
 
 
         sdiff -bBWs output_1.txt out1.txt > tmp1.txt
@@ -60,31 +60,31 @@ checkAll(){
         echo "Checking your output files"
         _test_file="tmp1.txt"
         _project_file="Output 1"
-        _valgrindFile="valgrind_1.txt"
+        #_valgrindFile="valgrind_1.txt"
         # dispValgrind
         checkOutput
 
         _test_file="tmp2.txt"
         _project_file="Output 2"
-        _valgrindFile="valgrind_2.txt"
+        #_valgrindFile="valgrind_2.txt"
         # dispValgrind
         checkOutput
 
         _test_file="tmp3.txt"
         _project_file="Output 3"
-        _valgrindFile="valgrind_3.txt"
+        #_valgrindFile="valgrind_3.txt"
         # dispValgrind
         checkOutput
 
         _test_file="tmp4.txt"
         _project_file="Output 4"
-        _valgrindFile="valgrind_4.txt"
+        #_valgrindFile="valgrind_4.txt"
         # dispValgrind
         checkOutput
 
         _test_file="tmp5.txt"
         _project_file="Output 5"
-        _valgrindFile="valgrind_5.txt"
+        #_valgrindFile="valgrind_5.txt"
         # dispValgrind
         checkOutput
 
@@ -92,8 +92,8 @@ checkAll(){
         # _project_file="Output 5"
         # checkOutput
 
-        echo "Check the valgrind outputs under valgrind_#.txt"
-        echo "You are looking for no leaks!"
+        #echo "Check the valgrind outputs under valgrind_#.txt"
+        #echo "You are looking for no leaks!"
 
 
         rm tmp1.txt out1.txt 
@@ -123,17 +123,17 @@ checkOne()
         _outfile="out$1.txt"
         _checkFile="output$1.txt"
         _tmpFile="tmp$1.txt"
-        _vgFile="valgrind_$1.txt"
-        _vgCheckFile="m_valgrind_$1.txt"
+        #_vgFile="valgrind_$1.txt"
+        #_vgCheckFile="m_valgrind_$1.txt"
 
         # $projectName $_projectFile > $_outfile
-        valgrind --leak-check=full --demangle=yes --log-file=$_vgFile $projectName $_projectFile > $_outfile
+        #valgrind --leak-check=full --demangle=yes --log-file=$_vgFile $projectName $_projectFile > $_outfile
         sdiff -bBWs $_checkFile $_outfile > $_tmpFile
 
         echo "Checking project output"
         _test_file=$_tmpFile
         _project_file="Output $1"
-        _valgrindFile=$_vgFile
+        #_valgrindFile=$_vgFile
         dispValgrind
         checkOutput
 
