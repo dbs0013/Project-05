@@ -8,4 +8,6 @@ Update Name: "Status Report"
     b) Flame damage
         I) Enchanted weapons with the "Flame" enchantment deal fire damage
         II) Fire spells deal fire damage 
-2) Replacing the dictionary and vector / stack files with std::map
+    c) Poison damage
+        I) Poison will do a percentage of damage up to 2x damage from attacks
+    d) Healing spells remove all adverse statuses.
