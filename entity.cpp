@@ -17,7 +17,7 @@ Entity::Entity(JsonEntityBuilder & builder, JsonItemBuilder & inventory, uint32_
     _class = _builder.Class;
 
     _inventory.Init(inventory, _builder.inventoryIDs);
-
+    // Equipped item imparts the status damage of the weapon
     _currentEquipped = this->_inventory.GetFirstItem();
     // Assess status effect
     _serration = _currentEquipped.Serration();
@@ -101,6 +101,8 @@ std::string Entity::Class() const
 
 void Entity::Attack(Entity *target, uint32_t amount, const std::string &attackName)
 {
+    // Recalculate statuses before every attack
+    target->StatusCalc();
     std::cout << this->Name() << " uses " << attackName << " on target "
               << target->Name() << " dealing " << amount << " damage."
               << std::endl;
@@ -125,6 +127,11 @@ void Entity::Heal(Entity *target, uint32_t amount, const std::string & healName)
     std::cout << this->Name() << " uses " << healName << " on target "
               << target->Name() << " healing for " << amount
               << std::endl;
+    // Reset status effects on heal
+    target->_serration = 0;
+    target->_tindering = 0;
+    target->_poisoning = 0;
+    // Heal
     target->take_healing(amount);
 }
 
@@ -145,6 +152,7 @@ void Entity::StatusCalc() {
 
 void Entity::take_damage(uint32_t amount)
 {
+    uint32_t tempDamage = 0;
     if(_hp < amount)
     {
         _hp = 0;
@@ -153,14 +161,20 @@ void Entity::take_damage(uint32_t amount)
     }
     // Status calculations
     if (_serration != 0) {
-        _hp -= amount + _serration;
+        tempDamage = amount + _serration;
+        std::cout << Name() << " took " << tempDamage
+                  << " from serration! " << std::endl;
+        _hp -= tempDamage;
     }
-    else if (_tindering) {
-        _hp -= amount + _tindering;
+    else if (_tindering != 0) {
+        tempDamage = amount + _tindering;
+        std::cout << Name() << " took " << tempDamage
+                  << " from tindering! " << std::endl;
+        _hp -= tempDamage;
     }
-    else if (_poisoning) {
-        uint32_t tempDamage = amount + (amount * _poisoning);
-        std::cout << Name() << " takes " << tempDamage
+    else if (_poisoning != 0) {
+        tempDamage = amount + (amount * _poisoning);
+        std::cout << Name() << " took " << tempDamage
                   << " from poison! " << std::endl;
         _hp -= tempDamage;
     }
